@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="favoriteFood" name="favoriteFood" class="com.test02.Food">
+		<property name="name" value="치킨"></property>
+		<property name="price" value="20000"></property>
+	</bean> 
+	
+	<bean id="unFavoriteFood" name="unFavoriteFood" class="com.test02.Food">
+		<constructor-arg value="오이"/>
+		<constructor-arg value="2000"/>
+	</bean>
+	
+	<bean id="myFood" class="com.test02.MyFood" autowire="constructor"></bean>
+	<!-- autowire 속성 정리
+		1. byName : setter와 같은 이름의 bean (id/name) 이 있으면 자동 할당
+		2. byType : setter의 parameterType과 같은 type의 bean이 있으면 자동 할당
+		3. constructor : 생성자와 같은 이름의 bean 이 있으면 자동 할당
+		4. defalut : 생성자에 할당할 수 있는지 확인 후 -> 없으면 setter에서 확인하여 할당
+					 기본 생성자가 있으면 기본생성자 호출!
+		
+	
+	
+		constructor : Bean으로 등록된 Bean class의 인스턴스시 콜백되는 생성자에 선언된 파라메터 타입과 일치하는 설정파일에 등록된 빈이 존재하면 해당 빈의 인스턴스를 생성자에 주입합니다.
+		byName : Bean으로 등록된 Bean class의 인스턴스 직후 설정파일에 선언된 다른 빈의 인스턴스를 주입될 메서드 선언으로 취득 활용.(메서드 선언시의 메서드 명 기준)
+				 public void set + '주입을 받으려하는 자원의 빈등록시 id 또는 name 속성값'(주입대상 타입 선언)
+		byType : Bean으로 등록된 Bean class의 인스턴스 직후 설정파일에 선언된 다른 빈의 인스턴스를 주입될 메서드 선언으로 취득 활용.(메서드 선언시의 메서드 타입 기준)
+				public void set + '주입을 받으려하는 자원의 빈등록시 id 또는 name 속성값'(주입대상 타입 선언)
+		no: Bean을 자동연결하지 않습니다. 직접 ref를 이용하여 명시적으로 연결해주어야 합니다.
+	
+	 -->
+
+</beans>
