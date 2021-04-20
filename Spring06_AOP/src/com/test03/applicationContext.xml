@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean id="woman" class="com.test03.Woman" />
+	<bean id="man" class="com.test03.Man" />
+	<bean id="myAspect" class="com.test03.MyAspect"/>
+	<aop:config>
+		<aop:aspect ref="myAspect">
+			<aop:before method="before" pointcut="execution(public * *(..))"/>
+			<aop:before method="after" pointcut="execution(public * *(..))"/>
+		</aop:aspect>
+	</aop:config>
+	<!-- (..)파라미터가 몇개든 상관없다. -->
+	<!-- *(리턴타입이 뭐든 상관없고) *(메소드이름이 뭐든 상관없고) (..)파라미터가 몇개든 상관없다. -->
+</beans>
