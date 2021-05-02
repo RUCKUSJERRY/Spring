@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>	
+		
+	<!-- 
+		HttpServletRequest 객체는 multipart/form-data 파일을 지원하지 않는다.
+		multipart/form-data 요청이 들어오면
+		서블릿 리퀘스트가 이를 처리할때 MultipartResolver 라는 객체를 이용해서 처리하도록 만들어줘야한다.
+
+		maxUploadSize : byte 최대 업로드 가능한 바이트 크기, -1은 제한이 없음을 의미합니다. Default(-1) 
+		defaultEncording : 요청을 파싱할 때 사용할 캐릭터 인코딩, 지정하지 않은 경우 HttpServletRequest.setEncording() 메서드로 지정한 캐릭터 셋이 사용됩니다. 
+		 					아무 값도 없을 경우 ISO-8859-1을 사용합니다.
+		 					
+		maxInMemorySize : 	디스크에 임시 파일을 생성하기 전에 메모리에 보관할 수 있는 최대 바이트 크기, 기본 값은 10240 바이트입니다.
+		
+		
+
+	
+	-->	
+</beans>
