@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>UPDATE</h1>
+	
+	<form th:action="@{updateres}" method="post" th:object="${dto}">
+			<input type="hidden" name="myno" th:value="${dto.myno}">
+		<table border="1">
+			<tr>
+				<th>MYNAME</th>
+				<td><input type="text" name="myname" th:value="${dto.myname}"></td>
+			</tr>
+			<tr>
+				<th>MYTITLE</th>
+				<td><input type="text" name="mytitle" th:value="${dto.mytitle}"></td>
+			</tr>
+			<tr>
+				<th>MYCONTENT</th>
+				<td><textarea cols="60" rows="10" name="mycontent" th:inline="text">[[${dto.mycontent}]]</textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정하기" onclick="location.href='updateres'">
+					<input type="button" value="돌아가기" th:onclick="|location.href='detail?myno=${dto.myno}'|">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>DETAIL</h1>
+	
+		<table border="1" th:object="${dto}">
+			<tr>
+				<th>MYNAME</th>
+				<td><input type="text" name="myno" th:value="${dto.myno}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>MYNAME</th>
+				<td><input type="text" name="myname" th:value="${dto.myname}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>MYTITLE</th>
+				<td><input type="text" name="mytitle" th:value="${dto.mytitle}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>MYCONTENT</th>
+				<td><textarea cols="60" rows="10" name="mycontent" th:inline="text" readonly="readonly">[[${dto.mycontent}]]</textarea></td>
+			</tr>
+			<tr>
+				<th>MYDATE</th>
+				<td><input type="text" name="mydate" th:value="${dto.mydate}" readonly="readonly"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정하기" th:onclick="|location.href='updateform?myno=*{myno}'|">
+					<input type="button" value="삭제하기" th:onclick="|location.href='delete?myno=*{myno}'|">
+					<input type="button" value="돌아가기" th:onclick="|location.href='list'|">
+				</td>
+			</tr>
+		</table>
+
+</body>
+</html>
